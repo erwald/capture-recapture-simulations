@@ -6,17 +6,16 @@ data {
 }
 
 transformed data {
+  // true parameter values
   real omega_ = uniform_rng(0, 1);
   real p_ = uniform_rng(0, 1);
   int<lower=0, upper=1> z[P, R, M];
+  
+  // data
   int<lower=0, upper=1> y[P, R, M, T]; // Capture-history matrix
-
   int<lower=0> s[P, R, M]; // total # of captures for each potential member
   int<lower=0> C[P, R]; // size of observed data set
   
-  
-  
-  // simulate true state values
   for (i in 1:P) {
     for (j in 1:R) {
       for (k in 1:M) {
